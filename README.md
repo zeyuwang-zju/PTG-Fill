@@ -12,6 +12,9 @@ a coarse-to-fine architecture to achieve smooth-variation image inpainting. Our 
 - torchvision=0.9.1 
 - cuda=11.1
 
+# Pre-trained Weights
+Coming soon.
+
 # Citation
 If you are interested this repo for your research, welcome to cite our paper:
 

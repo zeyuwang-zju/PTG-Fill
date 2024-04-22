@@ -12,8 +12,15 @@ a coarse-to-fine architecture to achieve smooth-variation image inpainting. Our 
 - torchvision=0.9.1 
 - cuda=11.1
 
-# Pre-trained Weights
-Coming soon.
+# Pretrained Model Weights
+We provide the pretrained model weights on the four dataset:
+| Model | Code |
+| ------ | ------ |
+| [CelebA-HQ](https://pan.baidu.com/s/1cN4Cmb1zJfecfB-5vU0YpA?pwd=2fbT) | 2fbt |
+| [FFHQ](https://pan.baidu.com/s/10-HRRjMRhJMDBmOXpYEbZQ?pwd=2fbT) | 2fbt |
+| [PSV](https://pan.baidu.com/s/1Kd8rMmcVLqMvtkJEUTtlvg?pwd=2fbT) | 2fbT |
+| [Places2](https://pan.baidu.com/s/1rAptHj_aTT77nTdIZf5BmA?pwd=2fbT) | 2fbT |
+
 
 # Citation
 If you are interested this repo for your research, welcome to cite our paper:

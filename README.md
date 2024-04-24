@@ -16,8 +16,8 @@ a coarse-to-fine architecture to achieve smooth-variation image inpainting. Our 
 We provide the pretrained model weights on the four dataset:
 | Model | Code |
 | ------ | ------ |
-| [CelebA-HQ](https://pan.baidu.com/s/1cN4Cmb1zJfecfB-5vU0YpA?pwd=2fbT) | 2fbt |
-| [FFHQ](https://pan.baidu.com/s/10-HRRjMRhJMDBmOXpYEbZQ?pwd=2fbT) | 2fbt |
+| [CelebA-HQ](https://pan.baidu.com/s/1cN4Cmb1zJfecfB-5vU0YpA?pwd=2fbT) | 2fbT |
+| [FFHQ](https://pan.baidu.com/s/10-HRRjMRhJMDBmOXpYEbZQ?pwd=2fbT) | 2fbT |
 | [PSV](https://pan.baidu.com/s/1Kd8rMmcVLqMvtkJEUTtlvg?pwd=2fbT) | 2fbT |
 | [Places2](https://pan.baidu.com/s/1rAptHj_aTT77nTdIZf5BmA?pwd=2fbT) | 2fbT |
 

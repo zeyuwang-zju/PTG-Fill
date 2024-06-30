@@ -1,1 +1,0 @@
-python -m pytorch_fid ./inference_results/celeba_epoch42_mask_ratio0.2 /home/data/wangzeyu/Image_Inpainting/CelebAMask-HQ/CelebA-HQ-img/test

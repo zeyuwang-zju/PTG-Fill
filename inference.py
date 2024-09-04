@@ -31,9 +31,6 @@ def load_pretrained_generator(generator, args):
 
 
 def inference(args):
-    """
-    在测试集上，用预训练好的generator做推理.同时将得到的结果（补全的图像）存到相应的位置。位置文件名与原测试集文件名相同。
-    """
     # seed_torch(args.seed)
 
     generator = Generator(base_channels=64, base_patch=16, kernel_size=3, activ='swish', norm_type='instance', init_type='xavier')
@@ -42,7 +39,7 @@ def inference(args):
 
     save_path = os.path.join('./inference_results/', f'{args.dataset}_epoch{epoch}_mask_ratio{args.mask_ratio_test}')
     os.makedirs(save_path, exist_ok=True)
-    seed_torch(args.seed) # 随机种子放在这个位置可以保证生成出的mask每次都一样
+    seed_torch(args.seed)
 
     testset = ImageDataset(args.test_image_root, args.load_size, args.crop_size, args.mask_type, args.mask_ratio_test, args.mask_root, train=False, return_image_root=True)
     testloader = DataLoader(testset, batch_size=args.batch_size, shuffle=False, num_workers=args.num_workers)
@@ -56,7 +53,7 @@ def inference(args):
         save_image(comp, fp=os.path.join(save_path, image_name))
         if args.save_masked:
             damaged_images = ground_truth * mask + (1 - mask)
-            save_image(damaged_images, fp=os.path.join(save_path, 'masked_'+image_name)) # 被损坏的图片也可以存下来，如果不存的话注释掉这行 # 计算FID的时候，文件夹下不能有其它的文件
+            save_image(damaged_images, fp=os.path.join(save_path, 'masked_'+image_name))
     print('Inference done!')
 
 
@@ -69,7 +66,7 @@ if __name__ == '__main__':
     parser = argparse.ArgumentParser()
     parser.add_argument("--dataset", default='celeba', type=str)
     parser.add_argument("--device", default='cuda:0', type=str)
-    parser.add_argument("--batch_size", default=1, type=int) # 推理的时候bs设为1比较方便
+    parser.add_argument("--batch_size", default=1, type=int)
     parser.add_argument("--num_workers", default=2, type=int)
     parser.add_argument("--load_size", default=512, type=int)
     parser.add_argument("--crop_size", default=512, type=int)
@@ -82,21 +79,4 @@ if __name__ == '__main__':
     parser.add_argument("--seed", default=0, type=int, help='manual seed')
     args = parser.parse_args()
 
-
     main(args)
-
-"""
-88服务器：
-imagenet路径：/home/data/wangzeyu/Imagenet/ILSVRC2012/train /home/data/wangzeyu/Imagenet/ILSVRC2012/val (1280000+)
-celebA-HQ路径：/home/data/wangzeyu/Image_Inpainting/celebahq_512/train  /home/data/wangzeyu/Image_Inpainting/celebahq_512/test（30000）
-ffhq路径：/home/data/wangzeyu/Image_Inpainting/ffhq_512/train  /home/data/wangzeyu/Image_Inpainting/ffhq_512/test（70000）
-palces2路径：/home/data/wangzeyu/Image_Inpainting/Places2_512/train /home/data/wangzeyu/Image_Inpainting/Places2_512/val /home/data/wangzeyu/Image_Inpainting/Places2_512/test
-partial_conv mask路径："/home/data/wangzeyu/Image_Inpainting/mask_pconv/irregular_mask/disocclusion_img_mask/" "/home/data/wangzeyu/Image_Inpainting/mask_pconv/test_mask/testing_mask_dataset/" 一般用后面的test
-
-"/home/data/wangzeyu/Image_Inpainting/mask_pconv/test_mask/0.0-0.1/"
-"/home/data/wangzeyu/Image_Inpainting/mask_pconv/test_mask/0.1-0.2/"
-"/home/data/wangzeyu/Image_Inpainting/mask_pconv/test_mask/0.2-0.3/"
-"/home/data/wangzeyu/Image_Inpainting/mask_pconv/test_mask/0.3-0.4/"
-"/home/data/wangzeyu/Image_Inpainting/mask_pconv/test_mask/0.4-0.5/"
-"/home/data/wangzeyu/Image_Inpainting/mask_pconv/test_mask/0.5-0.6/"
-"""
